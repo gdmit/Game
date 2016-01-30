@@ -4,7 +4,13 @@
 #include "IMap.h"
 
 class Map : public IMap {
-    virtual int create(void);
+public:
+    Map() : IMap(IVector2D(0, 0)) { }
+    Map(IVector2D size);
+
+    virtual int create();
+
+    virtual ~Map() { }
 };
 
 #endif //GAME_MAP_H

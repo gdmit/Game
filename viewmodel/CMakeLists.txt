@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.3)
 
 project(Game_ViewModel)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -pthread")
-
 set(HEADER_FILES
         include/IGameProcess.h
         include/ViewModel.h)
@@ -20,4 +18,4 @@ enable_testing()
 
 add_executable(runViewModelTests ${TEST_FILES})
 
-target_link_libraries(runViewModelTests gtest gtest_main)
+target_link_libraries(runViewModelTests gtest gtest_main Game_ViewModel)
