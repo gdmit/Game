@@ -2,6 +2,7 @@ build/
 build_cmake/
 code-build/
 Testing/
+.idea/
 
 *.user
 
