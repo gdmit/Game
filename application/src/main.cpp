@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include "Map.h"
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
 int main(int argc, char* argv[]) {
-    printf("SD:LIGHSUKBGH");
     return 0;
 }

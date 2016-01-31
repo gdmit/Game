@@ -1,12 +1,15 @@
-#ifndef GAME_INDIVIDUAL_H
-#define GAME_INDIVIDUAL_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
-#include "IVector2D.h"
+#ifndef MODEL_INCLUDE_INDIVIDUAL_H_
+#define MODEL_INCLUDE_INDIVIDUAL_H_
+
+#include "../include/IVector2D.h"
 
 class Individual {
+ private:
     IVector2D position;
 
-public:
+ public:
     IVector2D getPosition() const {
         return position;
     }
@@ -15,8 +18,9 @@ public:
         this->position = position;
     }
 
-    Individual(const IVector2D position = IVector2D(0, 0)) : position(position) { }
+    Individual(const IVector2D position = IVector2D(0, 0)) :
+        position(position) { }
 };
 
 
-#endif //GAME_INDIVIDUAL_H
+#endif  // MODEL_INCLUDE_INDIVIDUAL_H_

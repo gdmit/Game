@@ -1,10 +1,9 @@
-#ifndef GAME_ICAMERA_H
-#define GAME_ICAMERA_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#ifndef INFRASTRUCTURE_INCLUDE_ICAMERA_H_
+#define INFRASTRUCTURE_INCLUDE_ICAMERA_H_
 
 class ICamera {
-
 };
 
-
-#endif //GAME_ICAMERA_H
+#endif  // INFRASTRUCTURE_INCLUDE_ICAMERA_H_

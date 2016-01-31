@@ -1,4 +1,5 @@
-#include <iostream>
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+
 #include <gtest/gtest.h>
 
 int main(int argc, char **argv) {

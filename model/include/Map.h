@@ -1,16 +1,18 @@
-#ifndef GAME_MAP_H
-#define GAME_MAP_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
-#include "IMap.h"
+#ifndef MODEL_INCLUDE_MAP_H_
+#define MODEL_INCLUDE_MAP_H_
+
+#include "../include/IMap.h"
 
 class Map : public IMap {
-public:
+ public:
     Map() : IMap(IVector2D(0, 0)) { }
-    Map(IVector2D size);
+    explicit Map(IVector2D size);
 
     virtual int create();
 
     virtual ~Map() { }
 };
 
-#endif //GAME_MAP_H
+#endif  // MODEL_INCLUDE_MAP_H_

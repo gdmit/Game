@@ -1,10 +1,9 @@
-#ifndef GAME_CAMERA2D_H
-#define GAME_CAMERA2D_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#ifndef INFRASTRUCTURE_INCLUDE_CAMERA2D_H_
+#define INFRASTRUCTURE_INCLUDE_CAMERA2D_H_
 
 class Camera2D {
-
 };
 
-
-#endif //GAME_CAMERA2D_H
+#endif  // INFRASTRUCTURE_INCLUDE_CAMERA2D_H_

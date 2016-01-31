@@ -1,10 +1,10 @@
-#ifndef GAME_VIEW_H
-#define GAME_VIEW_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#ifndef VIEW_INCLUDE_VIEW_H_
+#define VIEW_INCLUDE_VIEW_H_
 
 class View {
-
 };
 
 
-#endif //GAME_VIEW_H
+#endif  // VIEW_INCLUDE_VIEW_H_
