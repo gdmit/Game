@@ -1,8 +1,9 @@
-#ifndef GAME_IPOPULATION_H
-#define GAME_IPOPULATION_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+
+#ifndef MODEL_INCLUDE_IPOPULATION_H_
+#define MODEL_INCLUDE_IPOPULATION_H_
 
 class IPopulation {
-
 };
 
-#endif //GAME_IPOPULATION_H
+#endif  // MODEL_INCLUDE_IPOPULATION_H_

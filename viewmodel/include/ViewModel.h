@@ -1,10 +1,9 @@
-#ifndef GAME_VIEWMODEL_H
-#define GAME_VIEWMODEL_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#ifndef VIEWMODEL_INCLUDE_VIEWMODEL_H_
+#define VIEWMODEL_INCLUDE_VIEWMODEL_H_
 
 class ViewModel {
-
 };
 
-
-#endif //GAME_VIEWMODEL_H
+#endif  // VIEWMODEL_INCLUDE_VIEWMODEL_H_

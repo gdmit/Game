@@ -1,4 +1,6 @@
-#include "Map.h"
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+
+#include "../include/Map.h"
 
 int Map::create() {
     return 0;

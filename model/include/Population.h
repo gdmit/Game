@@ -1,11 +1,11 @@
-#ifndef GAME_POPULATION_H
-#define GAME_POPULATION_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
-#include "IPopulation.h"
+#ifndef MODEL_INCLUDE_POPULATION_H_
+#define MODEL_INCLUDE_POPULATION_H_
+
+#include "../include/IPopulation.h"
 
 class Population : public IPopulation {
-
 };
 
-
-#endif //GAME_POPULATION_H
+#endif  // MODEL_INCLUDE_POPULATION_H_

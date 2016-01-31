@@ -1,11 +1,13 @@
-#ifndef GAME_IMAP_H
-#define GAME_IMAP_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
-#include "IVector2D.h"
-#include "Cell.h"
+#ifndef MODEL_INCLUDE_IMAP_H_
+#define MODEL_INCLUDE_IMAP_H_
+
+#include "../include/IVector2D.h"
+#include "../include/Cell.h"
 
 class IMap {
-public:
+ public:
     virtual int create() = 0;
 
     IVector2D getSize() const { return size; }
@@ -40,7 +42,7 @@ public:
         individualID[position.x * size.y + position.y] = id;
     }
 
-protected:
+ protected:
     Cell* cells;
     int* individualID;
 
@@ -48,10 +50,10 @@ protected:
 
     IMap() { }
 
-    IMap(IVector2D size) : size(size) { }
+    explicit IMap(IVector2D size) : size(size) { }
 
     virtual ~IMap() { }
 };
 
 
-#endif //GAME_IMAP_H
+#endif  // MODEL_INCLUDE_IMAP_H_

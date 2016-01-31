@@ -1,10 +1,9 @@
-#ifndef GAME_IVIEWMODEL_H
-#define GAME_IVIEWMODEL_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#ifndef VIEW_INCLUDE_IVIEWMODEL_H_
+#define VIEW_INCLUDE_IVIEWMODEL_H_
 
 class IViewModel {
-
 };
 
-
-#endif //GAME_IVIEWMODEL_H
+#endif  // VIEW_INCLUDE_IVIEWMODEL_H_

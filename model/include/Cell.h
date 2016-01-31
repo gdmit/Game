@@ -1,5 +1,7 @@
-#ifndef GAME_CELL_H
-#define GAME_CELL_H
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+
+#ifndef MODEL_INCLUDE_CELL_H_
+#define MODEL_INCLUDE_CELL_H_
 
 enum CellType {
     BAD_TYPE,
@@ -13,11 +15,11 @@ enum CellType {
 };
 
 class Cell {
-private:
+ private:
     CellType type;
 
-public:
-    Cell(CellType type = PLAINS) : type(type) { }
+ public:
+    explicit Cell(CellType type = PLAINS) : type(type) { }
 
     CellType getType() const;
 
@@ -27,4 +29,4 @@ public:
 };
 
 
-#endif //GAME_CELL_H
+#endif  // MODEL_INCLUDE_CELL_H_
