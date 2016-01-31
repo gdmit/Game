@@ -1,15 +1,17 @@
-#include "IVector2D.h"
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+#include <algorithm>
+#include "../include/IVector2D.h"
 
 IVector2D IVector2D::zero(0, 0);
-IVector2D IVector2D::one (1, 1);
+IVector2D IVector2D::one(1, 1);
 
-void IVector2D::set(int x,int y) {
+void IVector2D::set(int x, int y) {
     this->x = x;
     this->y = y;
 }
 
 int IVector2D::operator==(const IVector2D &vector) const {
-    return (x == vector.x)&&(y == vector.y);
+    return (x == vector.x) && (y == vector.y);
 }
 
 IVector2D& IVector2D::operator=(const IVector2D& vector) {
@@ -24,7 +26,7 @@ IVector2D IVector2D::operator+() const {
 }
 
 IVector2D IVector2D::operator-() const {
-    return IVector2D ( -x, -y );
+    return IVector2D(-x, -y);
 }
 
 IVector2D& IVector2D::operator+=(const IVector2D& vector) {
@@ -70,10 +72,10 @@ IVector2D& IVector2D::operator/=(int value) {
 }
 
 int& IVector2D::operator[](int index) {
-    return * ( index + &x );
+    return *(index + &x);
 }
 
-int	IVector2D::operator!=(const IVector2D& vector) const {
+int IVector2D::operator!=(const IVector2D& vector) const {
     return x != vector.x || y != vector.y;
 }
 
@@ -86,7 +88,7 @@ IVector2D::operator const int*() const {
 }
 
 float IVector2D::length() const {
-    return (float) sqrt (x*x + y*y);
+    return static_cast<float>(sqrt(x*x + y*y));
 }
 
 float IVector2D::lengthSquare() const {
@@ -98,32 +100,19 @@ IVector2D& IVector2D::normalize() {
 }
 
 int IVector2D::maxLength() const {
-    return max(abs(x), abs(y));
+    return std::max(abs(x), abs(y));
 }
 
-int IVector2D::max(int a, int b ) const {
-    return a > b ? a : b;
+inline IVector2D operator+(const IVector2D& vector1, const IVector2D& vector2) {
+    return IVector2D(vector1.x + vector2.x, vector1.y + vector2.y);
 }
 
-int IVector2D::min(int a, int b) const {
-    return a < b ? a : b;
+inline IVector2D operator-(const IVector2D& vector1, const IVector2D&vector2) {
+    return IVector2D(vector1.x - vector2.x, vector1.y - vector2.y);
 }
 
-int IVector2D::sqr(int x) const {
-    return x*x;
-}
-
-
-inline IVector2D operator+(const IVector2D& u, const IVector2D& v) {
-    return IVector2D(u.x + v.x, u.y + v.y);
-}
-
-inline IVector2D operator-(const IVector2D& u, const IVector2D& v) {
-    return IVector2D(u.x - v.x, u.y - v.y);
-}
-
-inline IVector2D operator*(const IVector2D& u, const IVector2D& v) {
-    return IVector2D(u.x* v.x, u.y* v.y);
+inline IVector2D operator*(const IVector2D& vector1, const IVector2D& vector2) {
+    return IVector2D(vector1.x* vector2.x, vector1.y* vector2.y);
 }
 
 inline IVector2D operator*(const IVector2D& vector, int value) {
@@ -134,18 +123,18 @@ inline IVector2D operator*(int value, const IVector2D& vector) {
     return IVector2D(vector.x * value, vector.y * value);
 }
 
-inline IVector2D operator/(const IVector2D& u, const IVector2D& v) {
-    return IVector2D(u.x / v.x, u.y / v.y);
+inline IVector2D operator/(const IVector2D& vector1, const IVector2D& vector2) {
+    return IVector2D(vector1.x / vector2.x, vector1.y / vector2.y);
 }
 
 inline IVector2D operator/(const IVector2D& vector, int value) {
-    return IVector2D (vector.x / value, vector.y / value);
+    return IVector2D(vector.x / value, vector.y / value);
 }
 
 inline IVector2D operator/(int value, const IVector2D& vector) {
-    return IVector2D (value / vector.x, value / vector.y );
+    return IVector2D(value / vector.x, value / vector.y);
 }
 
-inline int operator&(const IVector2D& u, const IVector2D& v) {
-    return u.x*v.x + u.y*v.y;
+inline int operator&(const IVector2D& vector1, const IVector2D& vector2) {
+    return vector1.x* vector2.x + vector1.y* vector2.y;
 }

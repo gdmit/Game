@@ -1,34 +1,33 @@
-#ifndef GAME_VECTOR2D_H
-#define GAME_VECTOR2D_H
-#include <math.h>
-#include <stdlib.h>
+// Copyright (c) 2016 Evolution Team. All rights reserved.
+#ifndef MODEL_INCLUDE_IVECTOR2D_H_
+#define MODEL_INCLUDE_IVECTOR2D_H_
 
 class IVector2D {
-public:
+ public:
     static IVector2D zero;
     static IVector2D one;
 
     int x, y;
 
     IVector2D() { }
-    IVector2D(int value) : x(value), y(value) { }
+    explicit IVector2D(int value) : x(value), y(value) { }
     IVector2D(int x, int y) : x(x), y(y) { }
-    IVector2D(const IVector2D& vector) : x(vector.x), y(vector.y) { }
+    explicit IVector2D(const IVector2D& vector) : x(vector.x), y(vector.y) { }
 
-    void set(int, int);
+    void set(int x, int y);
 
-    int operator==(const IVector2D&) const;
-    IVector2D& operator=(const IVector2D&);
+    int operator==(const IVector2D& vector) const;
+    IVector2D& operator=(const IVector2D& vector);
     IVector2D operator+() const;
     IVector2D operator-() const;
-    IVector2D& operator+=(const IVector2D&);
-    IVector2D& operator-=(const IVector2D&);
-    IVector2D& operator*=(const IVector2D&);
-    IVector2D& operator*=(int);
-    IVector2D& operator/=(const IVector2D&);
-    IVector2D& operator/=(int);
-    int& operator[](int);
-    int	operator!=(const IVector2D&) const;
+    IVector2D& operator+=(const IVector2D& vector);
+    IVector2D& operator-=(const IVector2D& vector);
+    IVector2D& operator*=(const IVector2D& vector);
+    IVector2D& operator*=(int value);
+    IVector2D& operator/=(const IVector2D& vector);
+    IVector2D& operator/=(int value);
+    int& operator[](int index);
+    int operator!=(const IVector2D& vector) const;
     operator int*();
     operator const int*() const;
 
@@ -37,18 +36,18 @@ public:
     IVector2D& normalize();
     int maxLength() const;
 
-    friend IVector2D operator+(const IVector2D&, const IVector2D&);
-    friend IVector2D operator-(const IVector2D&, const IVector2D&);
-    friend IVector2D operator*(const IVector2D&, const IVector2D&);
-    friend IVector2D operator*(int, const IVector2D&);
-    friend IVector2D operator*(const IVector2D&, int);
-    friend IVector2D operator/(const IVector2D&, int);
-    friend IVector2D operator/(const IVector2D&, const IVector2D&);
-    friend int operator&(const IVector2D&, const IVector2D&);
-private:
-    int max(int a, int b) const;
-    int min(int a, int b) const;
-    int sqr(int x) const;
+    friend IVector2D operator+(const IVector2D& vector1,
+                               const IVector2D& vector2);
+    friend IVector2D operator-(const IVector2D& vector1,
+                               const IVector2D& vector2);
+    friend IVector2D operator*(const IVector2D& vector1,
+                               const IVector2D& vector2);
+    friend IVector2D operator*(int value, const IVector2D& vector);
+    friend IVector2D operator*(const IVector2D& vector, int value);
+    friend IVector2D operator/(const IVector2D& vector, int value);
+    friend IVector2D operator/(const IVector2D& vector1,
+                               const IVector2D& vector2);
+    friend int operator&(const IVector2D& vector1, const IVector2D& vector2);
 };
 
-#endif //GAME_VECTOR2D_H
+#endif  // MODEL_INCLUDE_IVECTOR2D_H_
