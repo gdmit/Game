@@ -11,14 +11,13 @@ set(HEADER_FILES
         include/Individual.h
         include/IPopulation.h
         include/Population.h
-        include/IVector2D.h)
+        include/Vector2D.h)
 
 set(SOURCES
         src/Map.cpp
         src/Cell.cpp
         src/Individual.cpp
-        src/Population.cpp
-        src/IVector2D.cpp)
+        src/Population.cpp)
 
 set(TEST_FILES
         test/modelTest.cpp

@@ -3,21 +3,21 @@
 #ifndef MODEL_INCLUDE_INDIVIDUAL_H_
 #define MODEL_INCLUDE_INDIVIDUAL_H_
 
-#include "../include/IVector2D.h"
+#include "Vector2D.h"
 
 class Individual {
  private:
-    IVector2D position;
+    Vector2i position;
 
  public:
-    Individual(const IVector2D position = IVector2D(0, 0)) :
-    position(position) { }
+    Individual(const Vector2i position = Vector2i(0, 0)) : position(position) { }
+    Individual(const int row, const int col) : position(Vector2i(row, col)) { }
 
-    IVector2D getPosition() const {
+    Vector2i getPosition() const {
         return position;
     }
 
-    void setPosition(const IVector2D position) {
+    void setPosition(const Vector2i position) {
         this->position = position;
     }
 
