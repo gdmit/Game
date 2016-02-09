@@ -10,6 +10,9 @@ class Individual {
     IVector2D position;
 
  public:
+    Individual(const IVector2D position = IVector2D(0, 0)) :
+    position(position) { }
+
     IVector2D getPosition() const {
         return position;
     }
@@ -18,8 +21,7 @@ class Individual {
         this->position = position;
     }
 
-    Individual(const IVector2D position = IVector2D(0, 0)) :
-        position(position) { }
+    virtual ~Individual() { }
 };
 
 

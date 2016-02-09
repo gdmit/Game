@@ -6,6 +6,10 @@
 #include "../include/IPopulation.h"
 
 class Population : public IPopulation {
+ public:
+    Population(int ID, int individualsCount);
+
+    virtual ~Population();
 };
 
 #endif  // MODEL_INCLUDE_POPULATION_H_

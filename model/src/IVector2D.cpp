@@ -1,4 +1,5 @@
 // Copyright (c) 2016 Evolution Team. All rights reserved.
+
 #include <algorithm>
 #include "../include/IVector2D.h"
 

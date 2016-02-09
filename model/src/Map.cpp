@@ -14,3 +14,8 @@ Map::Map(IVector2D size) : IMap(size) {
         individualID[i] = 0;
     }
 }
+
+Map::~Map() {
+    delete []individualID;
+    delete []cells;
+}

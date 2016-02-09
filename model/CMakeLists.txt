@@ -23,7 +23,8 @@ set(SOURCES
 set(TEST_FILES
         test/modelTest.cpp
         test/mapTest.cpp
-        test/individualTest.cpp)
+        test/individualTest.cpp
+        test/populationTest.cpp)
 
 add_library(Game_Model ${SOURCES} ${HEADER_FILES})
 
