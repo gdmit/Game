@@ -25,7 +25,7 @@ class Cell {
 
     void setType(const CellType type);
 
-    virtual ~Cell() { }
+    ~Cell() { }
 };
 
 

@@ -1,4 +1,5 @@
 // Copyright (c) 2016 Evolution Team. All rights reserved.
+
 #ifndef MODEL_INCLUDE_IVECTOR2D_H_
 #define MODEL_INCLUDE_IVECTOR2D_H_
 
@@ -12,7 +13,6 @@ class IVector2D {
     IVector2D() { }
     explicit IVector2D(int value) : x(value), y(value) { }
     IVector2D(int x, int y) : x(x), y(y) { }
-    explicit IVector2D(const IVector2D& vector) : x(vector.x), y(vector.y) { }
 
     void set(int x, int y);
 
@@ -48,6 +48,8 @@ class IVector2D {
     friend IVector2D operator/(const IVector2D& vector1,
                                const IVector2D& vector2);
     friend int operator&(const IVector2D& vector1, const IVector2D& vector2);
+
+    ~IVector2D() { }
 };
 
 #endif  // MODEL_INCLUDE_IVECTOR2D_H_

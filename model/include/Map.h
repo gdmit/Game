@@ -12,7 +12,7 @@ class Map : public IMap {
 
     virtual int create();
 
-    virtual ~Map() { }
+    virtual ~Map();
 };
 
 #endif  // MODEL_INCLUDE_MAP_H_
