@@ -10,6 +10,7 @@ class Population : public IPopulation {
     Population(int ID, std::vector<Individual> *individuals, IMap *map);
     virtual void nextGeneration();
     virtual void updatePopulation();
+    virtual Individual& getIndividual(int index);
     virtual int getIndividualsCount() const;
 
     virtual ~Population();

@@ -12,7 +12,9 @@ class IPopulation {
     virtual int getIndividualsCount() const = 0;
     virtual void nextGeneration() = 0;
     virtual void updatePopulation() = 0;
+    virtual Individual& getIndividual(int index) = 0;
     virtual ~IPopulation() { }
+
  protected:
     int ID;
     std::vector<Individual>* individuals;

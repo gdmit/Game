@@ -18,6 +18,7 @@ class Map : public IMap {
     virtual int getIndividualID(Vector2D<int> position) const;
     virtual int getIndividualID(int row, int col) const;
     virtual  void setIndividualID(Vector2D<int> position, const int id);
+    virtual  void setIndividualID(int row, int col, const int id);
 
     virtual ~Map();
 };

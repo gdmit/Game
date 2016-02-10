@@ -1,5 +1,6 @@
 // Copyright (c) 2016 Evolution Team. All rights reserved.
 
+#include <Map.h>
 #include "../include/Population.h"
 
 Population::Population(int ID, std::vector<Individual> *individuals, IMap *map) : IPopulation(ID, individuals, map) {
@@ -27,39 +28,48 @@ void Population::deleteIndividual(int individualNumber) {
 
 void Population::nextGeneration() {
     Vector2i mapSize = map->getSize();
+    int* nextGeneration = new int[mapSize.x * mapSize.y];
     for (auto row = 0; row < mapSize.x; row++) {
         for (auto col = 0; col < mapSize.y; col++) {
+            nextGeneration[row * mapSize.y + col] = map->getIndividualID(Vector2i(row, col));
+
             int neighborsCount = 0;
-            if (map->getIndividualID(Vector2i(row - 1, col - 1)) == ID) {
+            if (map->getIndividualID(row - 1, col - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row - 1, col)) == ID) {
+            if (map->getIndividualID(row - 1, col) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row - 1, col + 1)) == ID) {
+            if (map->getIndividualID(row - 1, col + 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row, col - 1)) == ID) {
+            if (map->getIndividualID(row, col - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row, col + 1)) == ID) {
+            if (map->getIndividualID(row, col + 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row + 1, col - 1)) == ID) {
+            if (map->getIndividualID(row + 1, col - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row + 1, col)) == ID) {
+            if (map->getIndividualID(row + 1, col) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(Vector2i(row + 1, col + 1)) == ID) {
+            if (map->getIndividualID(row + 1, col + 1) == ID) {
                 neighborsCount++;
             }
 
             if (neighborsCount == 3) {
-                map->setIndividualID(Vector2i(row, col), ID);
+                nextGeneration[row * mapSize.y + col] = ID;
             } else if (neighborsCount < 2 || neighborsCount > 3) {
-                map->setIndividualID(Vector2i(row, col), -1);
+                nextGeneration[row * mapSize.y + col] = -1;
             }
+        }
+    }
+
+    for (auto row = 0; row < mapSize.x; row++) {
+        for (auto col = 0; col < mapSize.y; col++) {
+            map->setIndividualID(row, col, nextGeneration[row * mapSize.y + col]);
         }
     }
 }
@@ -74,4 +84,7 @@ void Population::updatePopulation() {
             }
         }
     }
+}
+Individual& Population::getIndividual(int index) {
+    return individuals->operator[](static_cast<unsigned long>(index));
 }

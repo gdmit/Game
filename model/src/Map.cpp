@@ -7,7 +7,6 @@ int Map::create() {
 }
 
 Map::Map(Vector2i size) : IMap(size) {
-
     cells = new Cell[size.x * size.y];
 
     individualID = new int[size.x * size.y];
@@ -15,6 +14,7 @@ Map::Map(Vector2i size) : IMap(size) {
         individualID[i] = -1;
     }
 }
+
 
 Map::~Map() {
     delete []individualID;
@@ -88,3 +88,18 @@ void Map::setIndividualID(Vector2D<int> position, const int id) {
     individualID[position.x * size.y + position.y] = id;
 }
 
+void Map::setIndividualID(int row, int col, const int id) {
+    if (row < 0) {
+        row = size.x + row;
+    }
+    if (col < 0) {
+        col = size.y + col;
+    }
+    if (row >= size.x) {
+        row = row % size.x;
+    }
+    if (col >= size.y) {
+        col = col % size.y;
+    }
+    individualID[row * size.y + col] = id;
+}

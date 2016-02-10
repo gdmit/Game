@@ -17,6 +17,7 @@ class IMap {
     virtual int getIndividualID(Vector2D<int> position) const = 0;
     virtual int getIndividualID(int row, int col) const = 0;
     virtual  void setIndividualID(Vector2D<int> position, const int id) = 0;
+    virtual  void setIndividualID(int row, int col, const int id) = 0;
 
  protected:
     Cell* cells;
@@ -27,7 +28,6 @@ class IMap {
     IMap() {}
 
     explicit IMap(Vector2i size) : size(size) { }
-
     virtual ~IMap() { }
 };
 
