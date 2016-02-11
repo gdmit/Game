@@ -8,8 +8,10 @@
 class GameProcess : public IGameProcess {
  public:
     GameProcess();
- private:
     virtual void getNextGeneration();
+    virtual int getMapHeight();
+    virtual int getMapWidth();
+    virtual Vector2i getMapSize();
 };
 
 #endif  // MODEL_INCLUDE_GAMEPROCESS_H

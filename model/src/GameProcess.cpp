@@ -26,3 +26,15 @@ GameProcess::GameProcess() {
         generation[i] = -1;
     }
 }
+
+int GameProcess::getMapHeight() {
+    return map->getSize().x;
+}
+
+int GameProcess::getMapWidth() {
+    return map->getSize().y;
+}
+
+Vector2i GameProcess::getMapSize() {
+    return map->getSize();
+}

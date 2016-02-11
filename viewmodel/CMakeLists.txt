@@ -18,4 +18,4 @@ enable_testing()
 
 add_executable(runViewModelTests ${TEST_FILES})
 
-target_link_libraries(runViewModelTests gtest gtest_main Game_ViewModel)
+target_link_libraries(runViewModelTests gtest gtest_main Game_ViewModel Game_Model)

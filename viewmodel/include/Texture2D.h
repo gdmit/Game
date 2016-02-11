@@ -11,7 +11,7 @@ class Texture2D {
     unsigned char *colors;
     int channels;
 
-    Texture2D(int height, int width, int channels);
+    Texture2D(int width, int height, int channels);
 };
 
 #endif  // VIEWMODEL_INCLUDE_TEXTURE2D_H_

@@ -4,13 +4,14 @@
 #define VIEW_INCLUDE_IVIEWMODEL_H_
 
 #include "../../viewmodel/include/IGameProcess.h"
+#include "../../viewmodel/include/Texture2D.h"
 class IViewModel {
  protected:
     IGameProcess *gameProcess;
-    int textureWidth;
-    int textureHeight;
-    float *textureColor;
     IViewModel() { }
+ public:
+    Texture2D *texture;
+    virtual void updateTexture() = 0;
 
 };
 
