@@ -7,6 +7,9 @@
 class IViewModel {
  protected:
     IGameProcess *gameProcess;
+    int textureWidth;
+    int textureHeight;
+    float *textureColor;
     IViewModel() { }
 
 };
