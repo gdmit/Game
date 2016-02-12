@@ -12,7 +12,7 @@ struct KeyCodes {
 
 class ViewOCV {
  private:
-    static const int updateDelay = 200;
+    static const int updateDelay = 17;
     IViewModel* viewModel;
     cv::Mat image;
     std::string windowTitle;

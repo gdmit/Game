@@ -4,7 +4,8 @@ project(Game_ViewModel)
 
 set(HEADER_FILES
         include/IGameProcess.h
-        include/ViewModel.h include/Texture2D.h)
+        include/ViewModel.h
+        include/Texture2D.h)
 set(SOURCES
         src/ViewModel.cpp src/Texture2D.cpp)
 set(TEST_FILES

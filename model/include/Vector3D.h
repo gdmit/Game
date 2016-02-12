@@ -61,6 +61,10 @@ class Vector3D {
     ~Vector3D() { }
 };
 
+typedef Vector3D<int> Vector3i;
+typedef Vector3D<unsigned char> Vector3uc;
+typedef Vector3D<float> Vector3f;
+
 template<typename T>
 int Vector3D<T>::operator==(const Vector3D<T> &vector) const {
     return (x == vector.x) && (y == vector.y) && (z == vector.z);

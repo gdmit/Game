@@ -5,6 +5,7 @@
 
 #include "../../viewmodel/include/IGameProcess.h"
 #include "../../viewmodel/include/Texture2D.h"
+
 class IViewModel {
  protected:
     IGameProcess *gameProcess;

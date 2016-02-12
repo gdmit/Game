@@ -17,7 +17,7 @@ void GameProcess::getNextGeneration() {
 
 GameProcess::GameProcess() {
     generationNumber = 0;
-    map = new Map(Vector2i(10, 10));
+    map = new Map(Vector2i(50, 50));
     individuals = { Individual(0, 2), Individual(1, 2), Individual(2, 2), Individual(2, 1), Individual(1, 0) };
     population = new Population(0, &individuals, map);
 
