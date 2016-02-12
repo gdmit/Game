@@ -12,6 +12,7 @@ set(HEADER_FILES
         include/IPopulation.h
         include/Population.h
         include/Vector2D.h
+        include/Vector3D.h
         include/GameProcess.h)
 
 set(SOURCES
