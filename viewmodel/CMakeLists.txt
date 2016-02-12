@@ -12,6 +12,8 @@ set(TEST_FILES
 
 add_library(Game_ViewModel ${SOURCES} ${HEADER_FILES})
 
+target_link_libraries(Game_ViewModel Game_Model)
+
 target_include_directories (Game_ViewModel PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 enable_testing()

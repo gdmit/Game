@@ -4,10 +4,12 @@ project(Game_View)
 
 set(HEADER_FILES
         include/IViewModel.h
-        include/View.h)
+        include/ViewOCV.h)
 set(SOURCES
-        src/View.cpp)
+        src/ViewOCV.cpp)
 
 add_library(Game_View ${SOURCES} ${HEADER_FILES})
 
-target_include_directories (Game_View PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_link_libraries(Game_View ${LIBRARY_DEPS} ${OpenCV_LIBRARIES})
+
+target_include_directories (Game_View PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${OpenCV_INCLUDE_DIRS})
