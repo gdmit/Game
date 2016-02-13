@@ -17,8 +17,12 @@ void GameProcess::getNextGeneration() {
 
 GameProcess::GameProcess() {
     generationNumber = 0;
-    map = new Map(Vector2i(50, 50));
-    individuals = { Individual(0, 2), Individual(1, 2), Individual(2, 2), Individual(2, 1), Individual(1, 0) };
+    map = new Map(Vector2i(100, 100));
+    srand(0);
+    //individuals = { Individual(0, 2), Individual(1, 2), Individual(2, 2), Individual(2, 1), Individual(1, 0) };
+    for (int i = 0; i < 10000; i++) {
+        individuals.push_back(Individual(rand()%100, rand()%100));
+    }
     population = new Population(0, &individuals, map);
 
     generation = new int[map->getSize().x * map->getSize().y];

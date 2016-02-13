@@ -13,9 +13,20 @@ private:
     static Vector3uc backgroundColorBGR;
     static Vector3uc gridLineColorBGR;
 
+    int horizontalLinesCount;
+    int verticalLinesCount;
+    int lineWidth;
+    float cellSize;
+
+    int* horizontalCellsBorders;
+    int* verticalCellsBorders;
+
+    void calculateCellsBorders();
     void fillBackgroundPixels();
-    void fillGridLinesPixels(int stepX, int stepY, int lineWidth);
-    void fillGenerationPixels(int stepX, int stepY, int lineWidth);
+    void fillGridLinesPixels();
+    void fillGenerationPixels();
+    void fillHorizontalLinesPixels();
+    void fillVerticalLinesPixels();
 public:
     ViewModel(int width, int height);
     virtual void updateTexture();
