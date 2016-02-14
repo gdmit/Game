@@ -11,7 +11,7 @@ class Individual {
 
  public:
     Individual(const Vector2i position = Vector2i(0, 0)) : position(position) { }
-    Individual(const int row, const int col) : position(Vector2i(row, col)) { }
+    Individual(const int col, const int row) : position(Vector2i(col, row)) { }
 
     Vector2i getPosition() const {
         return position;

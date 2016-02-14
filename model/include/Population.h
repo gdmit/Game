@@ -10,13 +10,14 @@ class Population : public IPopulation {
     Population(int ID, std::vector<Individual> *individuals, IMap *map);
     virtual void nextGeneration();
     virtual void updatePopulation();
+    virtual void updateMap() const;
     virtual Individual& getIndividual(int index);
-    virtual int getIndividualsCount() const;
 
+    virtual int getIndividualsCount() const;
+    virtual void addIndividual(Individual individual);
+    virtual void deleteIndividual(int individualNumber);
     virtual ~Population();
  private:
-    virtual void addIndividual(Individual &individual);
-    virtual void deleteIndividual(int individualNumber);
 };
 
 #endif  // MODEL_INCLUDE_POPULATION_H_

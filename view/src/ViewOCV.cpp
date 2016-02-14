@@ -4,12 +4,12 @@
 #include "ViewOCV.h"
 #include "../../viewmodel/include/ViewModel.h"
 
-ViewOCV::ViewOCV(int width, int height, std::string title) {
-    windowWidth = width;
-    windowHeight = height;
+ViewOCV::ViewOCV(Vector2i textureSize, Vector2i mapSize, std::string title) {
+    windowWidth = textureSize.x;
+    windowHeight = textureSize.y;
     windowTitle = title;
 
-    viewModel = new ViewModel(windowWidth, windowHeight);
+    viewModel = new ViewModel(textureSize, mapSize);
 }
 
 void ViewOCV::onMouse(int event, int x, int y, int, void*) {
@@ -23,7 +23,6 @@ void ViewOCV::show() {
     cv::namedWindow(windowTitle, CV_WINDOW_NORMAL);
     cv::setMouseCallback(windowTitle, onMouse, 0);
     while (true) {
-        viewModel->updateTexture();
         image = cv::Mat(windowHeight, windowWidth, CV_8UC3, viewModel->texture->colors,
                         static_cast<size_t>(windowWidth * 3));
         cv::imshow(windowTitle, image);
@@ -38,6 +37,7 @@ void ViewOCV::show() {
             default:
                 break;
         }
+        viewModel->updateTexture();
     }
 }
 

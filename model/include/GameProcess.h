@@ -8,10 +8,12 @@
 class GameProcess : public IGameProcess {
  public:
     GameProcess();
+    explicit GameProcess(Vector2i mapSize);
     virtual void getNextGeneration();
     virtual int getMapHeight();
     virtual int getMapWidth();
     virtual Vector2i getMapSize();
+    virtual void fillMapWithRandomPopulations(unsigned int seed);
 };
 
 #endif  // MODEL_INCLUDE_GAMEPROCESS_H

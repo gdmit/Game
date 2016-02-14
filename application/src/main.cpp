@@ -4,7 +4,7 @@
 #include "../../viewmodel/include/ViewModel.h"
 #include "ViewOCV.h"
 int main(int argc, char* argv[]) {
-    ViewOCV *view = new ViewOCV(1000, 1000, "Game of Life (OpenCV)");
+    ViewOCV *view = new ViewOCV(Vector2i(1920, 1080), Vector2i(192, 108), "Game of Life (OpenCV)");
     view->show();
     return 0;
 }

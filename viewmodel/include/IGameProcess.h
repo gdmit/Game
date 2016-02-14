@@ -11,6 +11,7 @@ class IGameProcess {
     Map* map;
     IPopulation* population;
     std::vector<Individual> individuals;
+
     IGameProcess() {}
  public:
     int* generation;
@@ -18,6 +19,7 @@ class IGameProcess {
     virtual int getMapHeight() = 0;
     virtual int getMapWidth() = 0;
     virtual Vector2i getMapSize() = 0;
+    virtual void fillMapWithRandomPopulations(unsigned int seed) = 0;
 };
 
 #endif  // VIEWMODEL_INCLUDE_IGAMEPROCESS_H_

@@ -12,22 +12,26 @@ Vector3uc ViewModel::populationColorsBGR[MAX_POPULATION_COUNT] = {
 Vector3uc ViewModel::backgroundColorBGR = Vector3uc(255, 255, 255);
 Vector3uc ViewModel::gridLineColorBGR = Vector3uc(0, 0, 0);
 
-ViewModel::ViewModel(int width, int height) {
-    gameProcess = new GameProcess();
-    
+ViewModel::ViewModel(Vector2i textureSize, Vector2i mapSize) {
+    gameProcess = new GameProcess(mapSize);
+
     horizontalLinesCount = gameProcess->getMapHeight() + 1;
     verticalLinesCount = gameProcess->getMapWidth() + 1;
     lineWidth = 1;
-    
-    texture = new Texture2D(width, height, 3);
 
-    float stepX = static_cast<float>((texture->height - horizontalLinesCount * lineWidth)) / gameProcess->getMapHeight();
-    float stepY = static_cast<float>((texture->width - verticalLinesCount * lineWidth)) / gameProcess->getMapWidth();
+    texture = new Texture2D(textureSize.x, textureSize.y, 3);
+
+    float stepX = static_cast<float>((texture->width - verticalLinesCount * lineWidth)) / gameProcess->getMapWidth();
+    float stepY = static_cast<float>((texture->height - horizontalLinesCount * lineWidth)) / gameProcess->getMapHeight();
     cellSize = std::min(stepX, stepY);
 
     horizontalCellsBorders = new int[gameProcess->getMapHeight() * 2];
     verticalCellsBorders = new int[gameProcess->getMapWidth() * 2];
     calculateCellsBorders();
+
+    fillBackgroundPixels();
+    fillGridLinesPixels();
+    fillGenerationPixels();
 }
 
 void ViewModel::updateTexture() {
@@ -116,7 +120,6 @@ void ViewModel::fillVerticalLinesPixels() {
         }
     }
 }
-
 void ViewModel::fillGenerationPixels() {
     static int colorCounter;
     int byteInRow = texture->width * texture->channels;

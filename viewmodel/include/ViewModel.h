@@ -28,7 +28,7 @@ private:
     void fillHorizontalLinesPixels();
     void fillVerticalLinesPixels();
 public:
-    ViewModel(int width, int height);
+    ViewModel(Vector2i textureSize, Vector2i mapSize);
     virtual void updateTexture();
 
 };

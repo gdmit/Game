@@ -22,7 +22,7 @@ class ViewOCV {
 
     static void onMouse(int event, int x, int y, int, void*);
  public:
-    ViewOCV(int width, int height, std::string windowTitle);
+    ViewOCV(Vector2i textureSize, Vector2i mapSize, std::string windowTitle);
     void show();
 };
 
