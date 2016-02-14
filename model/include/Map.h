@@ -21,6 +21,9 @@ class Map : public IMap {
     virtual void setIndividualID(int col, int row, const int id);
 
     virtual ~Map();
+
+ private:
+    Vector2i convertToModelCoordinates(Vector2i position) const;
 };
 
 #endif  // MODEL_INCLUDE_MAP_H_

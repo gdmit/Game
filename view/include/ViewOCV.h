@@ -14,15 +14,13 @@ struct KeyCodes {
 class ViewOCV {
  private:
     static const int updateDelay = 60;
+    static constexpr const char* const windowTitle = "Game of Life (OpenCV)";
     IViewModel* viewModel;
-    cv::Mat image;
-    std::string windowTitle;
-    int windowWidth;
-    int windowHeight;
 
     static void onMouse(int event, int x, int y, int, void*);
+    static void drawViewModel(IViewModel* viewModel);
  public:
-    ViewOCV(Vector2i textureSize, Vector2i mapSize, std::string windowTitle);
+    ViewOCV(Vector2i textureSize, Vector2i mapSize);
     void show();
 };
 

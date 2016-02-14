@@ -30,6 +30,7 @@ private:
 public:
     ViewModel(Vector2i textureSize, Vector2i mapSize);
     virtual void updateTexture();
-
+    virtual void nextGeneration();
+    void setMapCell(int x, int y, int populationID);
 };
 #endif  // VIEWMODEL_INCLUDE_VIEWMODEL_H_

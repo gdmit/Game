@@ -14,6 +14,8 @@ class GameProcess : public IGameProcess {
     virtual int getMapWidth();
     virtual Vector2i getMapSize();
     virtual void fillMapWithRandomPopulations(unsigned int seed);
+    virtual void setMapCell(int col, int row, int populationID);
+    virtual void updateGeneration();
 };
 
 #endif  // MODEL_INCLUDE_GAMEPROCESS_H

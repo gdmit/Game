@@ -89,6 +89,7 @@ void Population::updatePopulation() {
         }
     }
 }
+
 Individual& Population::getIndividual(int index) {
     return individuals->operator[](static_cast<unsigned long>(index));
 }

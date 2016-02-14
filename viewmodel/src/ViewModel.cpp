@@ -35,11 +35,15 @@ ViewModel::ViewModel(Vector2i textureSize, Vector2i mapSize) {
 }
 
 void ViewModel::updateTexture() {
-    gameProcess->getNextGeneration();
+    gameProcess->updateGeneration();
 
     fillBackgroundPixels();
     fillGridLinesPixels();
     fillGenerationPixels();
+}
+
+void ViewModel::nextGeneration() {
+    gameProcess->getNextGeneration();
 }
 
 void ViewModel::calculateCellsBorders() {
@@ -120,6 +124,7 @@ void ViewModel::fillVerticalLinesPixels() {
         }
     }
 }
+
 void ViewModel::fillGenerationPixels() {
     static int colorCounter;
     int byteInRow = texture->width * texture->channels;
@@ -137,4 +142,24 @@ void ViewModel::fillGenerationPixels() {
         }
     }
     colorCounter++;
+}
+
+void ViewModel::setMapCell(int x, int y, int populationID) {
+    int cellCol = -1;
+    for (int col = 0; col < gameProcess->getMapWidth(); col++) {
+        if (x >= verticalCellsBorders[2 * col] / texture->channels &&
+            x <= verticalCellsBorders[2 * col + 1] / texture->channels)
+            cellCol = col;
+    }
+
+    int cellRow = -1;
+    for (int row = 0; row < gameProcess->getMapHeight(); row++) {
+        if (y >= horizontalCellsBorders[2 * row] && y <= horizontalCellsBorders[2 * row + 1]) {
+            cellRow = row;
+        }
+    }
+
+    if (cellCol != -1 && cellRow != -1) {
+        gameProcess->setMapCell(cellCol, cellRow, populationID);
+    }
 }

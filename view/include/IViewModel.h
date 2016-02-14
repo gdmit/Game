@@ -13,6 +13,7 @@ class IViewModel {
  public:
     Texture2D *texture;
     virtual void updateTexture() = 0;
+    virtual void nextGeneration() = 0;
 
 };
 

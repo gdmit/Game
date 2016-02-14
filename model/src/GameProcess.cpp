@@ -11,11 +11,7 @@ GameProcess::GameProcess(Vector2i mapSize) {
     fillMapWithRandomPopulations(0);
 
     generation = new int[map->getSize().x * map->getSize().y];
-    for (auto row = 0; row < map->getSize().y; row++) {
-        for (auto col = 0; col < map->getSize().x; col++) {
-            generation[row * map->getSize().x + col] = map->getIndividualID(col, row);
-        }
-    }
+    updateGeneration();
 }
 
 GameProcess::GameProcess() {
@@ -27,23 +23,23 @@ GameProcess::GameProcess() {
     population->updateMap();
 
     generation = new int[map->getSize().x * map->getSize().y];
-    for (auto row = 0; row < map->getSize().y; row++) {
-        for (auto col = 0; col < map->getSize().x; col++) {
-            generation[row * map->getSize().x + col] = map->getIndividualID(col, row);
-        }
-    }
+    updateGeneration();
 }
 
 void GameProcess::getNextGeneration() {
     population->nextGeneration();
     population->updatePopulation();
 
+    updateGeneration();
+    generationNumber++;
+}
+
+void GameProcess::updateGeneration() {
     for (auto row = 0; row < map->getSize().y; row++) {
         for (auto col = 0; col < map->getSize().x; col++) {
             generation[row * map->getSize().x + col] = map->getIndividualID(col, row);
         }
     }
-    generationNumber++;
 }
 
 int GameProcess::getMapHeight() {
@@ -65,4 +61,14 @@ void GameProcess::fillMapWithRandomPopulations(unsigned int seed) {
         population->addIndividual(Individual(rand() % map->getSize().x, rand() % map->getSize().y));
     }
     population->updateMap();
+}
+
+void GameProcess::setMapCell(int col, int row, int populationID) {
+    if (map->getIndividualID(col, row) == populationID) {
+        map->setIndividualID(col, row, -1);
+    } else {
+        map->setIndividualID(col, row, populationID);
+    }
+
+    population->updatePopulation();
 }

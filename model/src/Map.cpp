@@ -41,65 +41,40 @@ void Map::setCellType(const Vector2D<int> position, const CellType type) {
 }
 
 int Map::getIndividualID(Vector2i position) const {
-    if (position.y < 0) {
-        position.y = size.y + position.y;
-    }
-    if (position.x < 0) {
-        position.x = size.x + position.x;
-    }
-    if (position.y >= size.y) {
-        position.y = position.y % size.y;
-    }
-    if (position.x >= size.x) {
-        position.x = position.x % size.x;
-    }
+    position = convertToModelCoordinates(position);
     return individualID[position.y * size.x + position.x];
 }
 
 int Map::getIndividualID(int col, int row) const {
-    if (row < 0) {
-        row = size.y + row;
-    }
-    if (col < 0) {
-        col = size.x + col;
-    }
-    if (row >= size.y) {
-        row = row % size.y;
-    }
-    if (col >= size.x) {
-        col = col % size.x;
-    }
-    return individualID[row * size.x + col];
+    Vector2i position = convertToModelCoordinates(Vector2i(col, row));
+    return individualID[position.y * size.x + position.x];
 }
 
 void Map::setIndividualID(Vector2D<int> position, const int id) {
-    if (position.y < 0) {
-        position.y = size.y + position.y;
-    }
-    if (position.x < 0) {
-        position.x = size.x + position.x;
-    }
-    if (position.y >= size.y) {
-        position.y = position.y % size.y;
-    }
-    if (position.x >= size.x) {
-        position.x = position.x % size.x;
-    }
+    position = convertToModelCoordinates(position);
     individualID[position.y * size.x + position.x] = id;
 }
 
 void Map::setIndividualID(int col, int row, const int id) {
-    if (row < 0) {
-        row = size.y + row;
+    Vector2i position = convertToModelCoordinates(Vector2i(col, row));
+    individualID[position.y * size.x + position.x] = id;
+}
+
+Vector2i Map::convertToModelCoordinates(Vector2i position) const {
+    Vector2i coordinates = position;
+
+    if (position.y < 0) {
+        coordinates.y = size.y + position.y;
     }
-    if (col < 0) {
-        col = size.x + col;
+    if (position.x < 0) {
+        coordinates.x = size.x + position.x;
     }
-    if (row >= size.y) {
-        row = row % size.y;
+    if (position.y >= size.y) {
+        coordinates.y = position.y % size.y;
     }
-    if (col >= size.x) {
-        col = col % size.x;
+    if (position.x >= size.x) {
+        coordinates.x = position.x % size.x;
     }
-    individualID[row * size.x + col] = id;
+
+    return coordinates;
 }

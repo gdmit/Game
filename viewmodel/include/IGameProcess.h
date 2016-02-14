@@ -15,11 +15,13 @@ class IGameProcess {
     IGameProcess() {}
  public:
     int* generation;
+    virtual void updateGeneration() = 0;
     virtual void getNextGeneration() = 0;
     virtual int getMapHeight() = 0;
     virtual int getMapWidth() = 0;
     virtual Vector2i getMapSize() = 0;
     virtual void fillMapWithRandomPopulations(unsigned int seed) = 0;
+    virtual void setMapCell(int col, int row, int populationID) = 0;
 };
 
 #endif  // VIEWMODEL_INCLUDE_IGAMEPROCESS_H_
