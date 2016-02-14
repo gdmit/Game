@@ -4,19 +4,29 @@
 #define MODEL_INCLUDE_IPOPULATION_H_
 
 #include "../include/Individual.h"
+#include "../include/IMap.h"
 #include <vector>
 
 class IPopulation {
+ public:
+    virtual int getIndividualsCount() const = 0;
+    virtual void nextGeneration() = 0;
+    virtual void updatePopulation() = 0;
+    virtual Individual& getIndividual(int index) = 0;
+    virtual ~IPopulation() { }
+
  protected:
     int ID;
-    int individualsCount;
     std::vector<Individual>* individuals;
+    IMap *map;
 
-    IPopulation(int ID, int individualsCount) :
-        ID(ID), individualsCount(individualsCount) { }
+    IPopulation(int ID, std::vector<Individual> *individuals, IMap *map) : ID(ID), individuals(individuals), map(map) {}
 
- public:
-    virtual ~IPopulation() { }
+    virtual void addIndividual(Individual &individual) = 0;
+    virtual void deleteIndividual(int individualNumber) = 0;
+
 };
+
+
 
 #endif  // MODEL_INCLUDE_IPOPULATION_H_

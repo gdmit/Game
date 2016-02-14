@@ -3,7 +3,33 @@
 #ifndef VIEWMODEL_INCLUDE_VIEWMODEL_H_
 #define VIEWMODEL_INCLUDE_VIEWMODEL_H_
 
-class ViewModel {
-};
+#include <../../model/include/Vector3D.h>
+#include "../../view/include/IViewModel.h"
 
+class ViewModel : public IViewModel {
+private:
+    static const int MAX_POPULATION_COUNT = 10;
+    static Vector3uc populationColorsBGR[MAX_POPULATION_COUNT];
+    static Vector3uc backgroundColorBGR;
+    static Vector3uc gridLineColorBGR;
+
+    int horizontalLinesCount;
+    int verticalLinesCount;
+    int lineWidth;
+    float cellSize;
+
+    int* horizontalCellsBorders;
+    int* verticalCellsBorders;
+
+    void calculateCellsBorders();
+    void fillBackgroundPixels();
+    void fillGridLinesPixels();
+    void fillGenerationPixels();
+    void fillHorizontalLinesPixels();
+    void fillVerticalLinesPixels();
+public:
+    ViewModel(int width, int height);
+    virtual void updateTexture();
+
+};
 #endif  // VIEWMODEL_INCLUDE_VIEWMODEL_H_

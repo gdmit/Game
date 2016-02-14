@@ -7,10 +7,18 @@
 
 class Map : public IMap {
  public:
-    Map() : IMap(IVector2D(0, 0)) { }
-    explicit Map(IVector2D size);
+    explicit Map(Vector2i size);
 
     virtual int create();
+
+    virtual Vector2i getSize() const;
+    virtual CellType getCellType(const Vector2D<int> position) const;
+    virtual void setCellType(const Vector2D<int> position, const CellType type);
+
+    virtual int getIndividualID(Vector2D<int> position) const;
+    virtual int getIndividualID(int row, int col) const;
+    virtual  void setIndividualID(Vector2D<int> position, const int id);
+    virtual  void setIndividualID(int row, int col, const int id);
 
     virtual ~Map();
 };

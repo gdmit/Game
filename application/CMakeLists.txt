@@ -6,4 +6,4 @@ project(Game_Application)
 set(SOURCES src/main.cpp)
 
 add_executable(Game_Application ${SOURCES})
-target_link_libraries(Game_Application LINK_PUBLIC Game_Model)
+target_link_libraries(Game_Application LINK_PUBLIC Game_Model Game_View Game_ViewModel ${LIBRARY_DEPS})

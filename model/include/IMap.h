@@ -3,55 +3,31 @@
 #ifndef MODEL_INCLUDE_IMAP_H_
 #define MODEL_INCLUDE_IMAP_H_
 
-#include "../include/IVector2D.h"
+#include "Vector2D.h"
 #include "../include/Cell.h"
 
 class IMap {
  public:
     virtual int create() = 0;
+    virtual Vector2i getSize() const = 0;
 
-    IVector2D getSize() const { return size; }
+    virtual CellType getCellType(const Vector2D<int> position) const = 0;
+    virtual void setCellType(const Vector2D<int> position, const CellType type) = 0;
 
-    CellType getCellType(const IVector2D position) const {
-        if (position.x >= size.x || position.y >= size.y) {
-            return BAD_TYPE;
-        }
-
-        return cells[position.x * size.y + position.y].getType();
-    }
-    void setCellType(const IVector2D position, const CellType type) {
-        if (position.x >= size.x || position.y >= size.y) {
-            return;
-        }
-
-        cells[position.x * size.y + position.y].setType(type);
-    }
-
-    int getIndividualID(const IVector2D position) const {
-        if (position.x >= size.x || position.y >= size.y) {
-            return -1;
-        }
-
-        return individualID[position.x * size.y + position.y];
-    }
-    void setIndividualID(const IVector2D position, const int id) {
-        if (position.x >= size.x || position.y >= size.y) {
-            return;
-        }
-
-        individualID[position.x * size.y + position.y] = id;
-    }
+    virtual int getIndividualID(Vector2D<int> position) const = 0;
+    virtual int getIndividualID(int row, int col) const = 0;
+    virtual  void setIndividualID(Vector2D<int> position, const int id) = 0;
+    virtual  void setIndividualID(int row, int col, const int id) = 0;
 
  protected:
     Cell* cells;
     int* individualID;
 
-    IVector2D size;
+    Vector2i size;
 
-    IMap() { }
+    IMap() {}
 
-    explicit IMap(IVector2D size) : size(size) { }
-
+    explicit IMap(Vector2i size) : size(size) { }
     virtual ~IMap() { }
 };
 
