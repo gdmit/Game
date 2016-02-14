@@ -30,76 +30,76 @@ CellType Map::getCellType(const Vector2D<int> position) const {
         return BAD_TYPE;
     }
 
-    return cells[position.x * size.y + position.y].getType();
+    return cells[position.y * size.x + position.x].getType();
 }
 void Map::setCellType(const Vector2D<int> position, const CellType type) {
     if (position.x >= size.x || position.y >= size.y) {
         return;
     }
 
-    cells[position.x * size.y + position.y].setType(type);
+    cells[position.y * size.x + position.x].setType(type);
 }
 
 int Map::getIndividualID(Vector2i position) const {
-    if (position.x < 0) {
-        position.x = size.x + position.x;
-    }
     if (position.y < 0) {
         position.y = size.y + position.y;
     }
-    if (position.x >= size.x) {
-        position.x = position.x % size.x;
+    if (position.x < 0) {
+        position.x = size.x + position.x;
     }
     if (position.y >= size.y) {
         position.y = position.y % size.y;
     }
-    return individualID[position.x * size.y + position.y];
+    if (position.x >= size.x) {
+        position.x = position.x % size.x;
+    }
+    return individualID[position.y * size.x + position.x];
 }
 
-int Map::getIndividualID(int row, int col) const {
+int Map::getIndividualID(int col, int row) const {
     if (row < 0) {
-        row = size.x + row;
+        row = size.y + row;
     }
     if (col < 0) {
-        col = size.y + col;
+        col = size.x + col;
     }
-    if (row >= size.x) {
-        row = row % size.x;
+    if (row >= size.y) {
+        row = row % size.y;
     }
-    if (col >= size.y) {
-        col = col % size.y;
+    if (col >= size.x) {
+        col = col % size.x;
     }
-    return individualID[row * size.y + col];
+    return individualID[row * size.x + col];
 }
 
 void Map::setIndividualID(Vector2D<int> position, const int id) {
-    if (position.x < 0) {
-        position.x = size.x + position.x;
-    }
     if (position.y < 0) {
         position.y = size.y + position.y;
     }
-    if (position.x >= size.x) {
-        position.x = position.x % size.x;
+    if (position.x < 0) {
+        position.x = size.x + position.x;
     }
     if (position.y >= size.y) {
         position.y = position.y % size.y;
     }
-    individualID[position.x * size.y + position.y] = id;
+    if (position.x >= size.x) {
+        position.x = position.x % size.x;
+    }
+    individualID[position.y * size.x + position.x] = id;
 }
 
-void Map::setIndividualID(int row, int col, const int id) {
+void Map::setIndividualID(int col, int row, const int id) {
     if (row < 0) {
-        row = size.x + row;
+        row = size.y + row;
     }
     if (col < 0) {
-        col = size.y + col;
+        col = size.x + col;
     }
-    if (row >= size.x) {
-        row = row % size.x;
+    if (row >= size.y) {
+        row = row % size.y;
     }
-    if (col >= size.y) {
-        col = col % size.y;
+    if (col >= size.x) {
+        col = col % size.x;
     }
-    individualID[row * size.y + col] = id;
+    individualID[row * size.x + col] = id;
 }

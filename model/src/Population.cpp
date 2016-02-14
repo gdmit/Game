@@ -4,9 +4,7 @@
 #include "../include/Population.h"
 
 Population::Population(int ID, std::vector<Individual> *individuals, IMap *map) : IPopulation(ID, individuals, map) {
-    for (auto it = individuals->begin(); it != individuals->end(); it++) {
-        map->setIndividualID(it->getPosition(), ID);
-    }
+    updateMap();
 }
 
 Population::~Population() {
@@ -17,7 +15,7 @@ int Population::getIndividualsCount() const {
     return static_cast<int>(individuals->size());
 }
 
-void Population::addIndividual(Individual &individual) {
+void Population::addIndividual(Individual individual) {
     individuals->push_back(individual);
 }
 
@@ -29,58 +27,64 @@ void Population::deleteIndividual(int individualNumber) {
 void Population::nextGeneration() {
     Vector2i mapSize = map->getSize();
     int* nextGeneration = new int[mapSize.x * mapSize.y];
-    for (auto row = 0; row < mapSize.x; row++) {
-        for (auto col = 0; col < mapSize.y; col++) {
-            nextGeneration[row * mapSize.y + col] = map->getIndividualID(Vector2i(row, col));
+    for (auto row = 0; row < mapSize.y; row++) {
+        for (auto col = 0; col < mapSize.x; col++) {
+            nextGeneration[row * mapSize.x + col] = map->getIndividualID(Vector2i(col, row));
 
             int neighborsCount = 0;
-            if (map->getIndividualID(row - 1, col - 1) == ID) {
+            if (map->getIndividualID(col - 1, row - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row - 1, col) == ID) {
+            if (map->getIndividualID(col, row - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row - 1, col + 1) == ID) {
+            if (map->getIndividualID(col + 1, row - 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row, col - 1) == ID) {
+            if (map->getIndividualID(col - 1, row) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row, col + 1) == ID) {
+            if (map->getIndividualID(col + 1, row) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row + 1, col - 1) == ID) {
+            if (map->getIndividualID(col - 1, row + 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row + 1, col) == ID) {
+            if (map->getIndividualID(col, row + 1) == ID) {
                 neighborsCount++;
             }
-            if (map->getIndividualID(row + 1, col + 1) == ID) {
+            if (map->getIndividualID(col + 1, row + 1) == ID) {
                 neighborsCount++;
             }
 
             if (neighborsCount == 3) {
-                nextGeneration[row * mapSize.y + col] = ID;
+                nextGeneration[row * mapSize.x + col] = ID;
             } else if (neighborsCount < 2 || neighborsCount > 3) {
-                nextGeneration[row * mapSize.y + col] = -1;
+                nextGeneration[row * mapSize.x + col] = -1;
             }
         }
     }
 
-    for (auto row = 0; row < mapSize.x; row++) {
-        for (auto col = 0; col < mapSize.y; col++) {
-            map->setIndividualID(row, col, nextGeneration[row * mapSize.y + col]);
+    for (auto row = 0; row < mapSize.y; row++) {
+        for (auto col = 0; col < mapSize.x; col++) {
+            map->setIndividualID(col, row, nextGeneration[row * mapSize.x + col]);
         }
+    }
+}
+
+void Population::updateMap() const {
+    for (auto it = individuals->begin(); it != individuals->end(); it++) {
+        map->setIndividualID(it->getPosition(), ID);
     }
 }
 
 void Population::updatePopulation() {
     Vector2i mapSize = map->getSize();
     individuals->clear();
-    for (auto row = 0; row < mapSize.x; row++) {
-        for (auto col = 0; col < mapSize.y; col++) {
-            if (map->getIndividualID(row, col) == ID) {
-                individuals->push_back(Individual(Vector2i(row, col)));
+    for (auto row = 0; row < mapSize.y; row++) {
+        for (auto col = 0; col < mapSize.x; col++) {
+            if (map->getIndividualID(col, row) == ID) {
+                individuals->push_back(Individual(Vector2i(col, row)));
             }
         }
     }

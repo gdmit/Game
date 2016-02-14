@@ -15,9 +15,9 @@ class IMap {
     virtual void setCellType(const Vector2D<int> position, const CellType type) = 0;
 
     virtual int getIndividualID(Vector2D<int> position) const = 0;
-    virtual int getIndividualID(int row, int col) const = 0;
-    virtual  void setIndividualID(Vector2D<int> position, const int id) = 0;
-    virtual  void setIndividualID(int row, int col, const int id) = 0;
+    virtual int getIndividualID(int col, int row) const = 0;
+    virtual void setIndividualID(Vector2D<int> position, const int id) = 0;
+    virtual void setIndividualID(int col, int row, const int id) = 0;
 
  protected:
     Cell* cells;

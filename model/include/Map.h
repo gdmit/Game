@@ -16,9 +16,9 @@ class Map : public IMap {
     virtual void setCellType(const Vector2D<int> position, const CellType type);
 
     virtual int getIndividualID(Vector2D<int> position) const;
-    virtual int getIndividualID(int row, int col) const;
-    virtual  void setIndividualID(Vector2D<int> position, const int id);
-    virtual  void setIndividualID(int row, int col, const int id);
+    virtual int getIndividualID(int col, int row) const;
+    virtual void setIndividualID(Vector2D<int> position, const int id);
+    virtual void setIndividualID(int col, int row, const int id);
 
     virtual ~Map();
 };
